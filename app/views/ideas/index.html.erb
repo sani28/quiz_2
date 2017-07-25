@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>The Idea Factory</title>
+  </head>
+  <body>
+
+
+    <h1>
+      <%= image_tag 'h1-all-ideas.jpg', style: '' %>
+    </h1>
+
+    <div id="ideas-list">
+    <% @ideas.each do |idea| %>
+      <%= link_to idea.title, idea_path(idea) %>
+      <hr />
+    <% end %>
+    </div>
+
+  </body>
+</html>

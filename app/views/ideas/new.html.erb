@@ -1,0 +1,18 @@
+<h1><%= image_tag 'h1-new-ideas-submission.jpg', style: '' %>  </h1>
+
+<div id="new-idea-form">
+
+<%= form_for @idea do |f| %>
+
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+
+    <br>
+    <br>
+    <%= f.text_area :description, placeholder: 'Enter your idea here' %>
+    <br><br>
+
+  <%= f.submit class: 'btn btn-primary'%>
+<% end %>
+
+</div>

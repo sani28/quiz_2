@@ -1,0 +1,18 @@
+<h1><%= image_tag 'h1-sign-in.jpg', style: '' %>  </h1>
+
+
+<div id="submission-form">
+<%= form_tag session_path do %>
+  <div>
+    <%= label_tag :email %>
+    <%= email_field_tag :email %>
+  </div>
+  <div>
+    <%= label_tag :password %>
+    <%= password_field_tag :password_digest %>
+  </div>
+
+  <%= submit_tag "Log In to Idea Factory" %>
+
+<% end %>
+</div>

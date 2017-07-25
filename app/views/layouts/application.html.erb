@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Model</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+
+  <body>
+
+<center> <%= image_tag 'logo.jpg', style: '' %></center>
+
+  <hr>
+
+<center>
+
+  <br><br>
+
+
+  <%= link_to(' New Idea', new_idea_path) %> &nbsp;
+ |
+   &nbsp;<%= link_to(' All Ideas ', ideas_path) %> &nbsp;
+
+
+    <% if user_signed_in? %>
+    <div id="push-user-greeting-right">
+          Hi, <%= current_user.name %>!
+
+    </div>
+    <% else %>
+
+     |    &nbsp;<%= link_to('Sign Up ', new_user_path) %> &nbsp;
+
+     |    &nbsp;<%= link_to('Sign In ', new_session_path) %>
+
+
+     <% end %>
+
+     <% if user_signed_in? %>
+
+     <span>
+       | <%= link_to 'Log Out', session_path, method: :delete,
+       data: {confirm: 'Logout?'} %>
+     </span><br><br>
+
+     <% end %>
+
+
+
+
+
+</center>
+<br>
+    <%= yield %>
+  </body>
+</html>
