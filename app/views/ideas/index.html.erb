@@ -13,7 +13,9 @@
 
     <div id="ideas-list">
     <% @ideas.each do |idea| %>
-      <%= link_to idea.title, idea_path(idea) %>
+      <h3>Title  </h3><%= link_to idea.title, idea_path(idea) %><br>
+      <h3>Description  </h3> <%= idea.description %><br>
+
       <hr />
     <% end %>
     </div>

@@ -6,9 +6,8 @@
 <p><strong>Author: </strong> <%= @idea.user&.name %></p>
 </div>
 
-
 <center>
-<% user_signed_in? && can?(:manage, @idea) %>
+<% if user_signed_in? && can?(:manage, @idea) %>
 <%= link_to 'Edit', edit_idea_path(@idea) %>
 <%= link_to 'Delete',
       idea_path(@idea),
@@ -16,4 +15,38 @@
       #under the hood, rails uses javascript to make a request with the verb Delete
 
 %>
+<% end %>
+
+<h2>Reviews</h2>
+
+<% if user_signed_in? %>
+
+  <%= form_for [@idea, @review] do |f| %>
+    <div>
+      <%= f.text_area :body %>
+    </div>
+    <div>
+      <%= f.label :rating %>
+      <%= f.select :rating, [5,4,3,2,1] %>
+    </div>
+    <%= f.submit %>
+  <% end %>
+<% end %>
+
+
+<% @reviews.each do |review| %>
+  <li>
+    <p><%= review.body %></p>
+    <p><strong>Commentor: </strong> <%= review.user&.name %></p>
+    <p>
+      <% if user_signed_in? && can?(:destroy, review) %>
+        <%= link_to 'Delete', idea_review_path(@idea, review),
+          method: :delete, data: { confirm: 'Are you sure?'} %>
+      <% end %>
+    </p>
+
+  </li>
+<% end %>
+
+
 </center>

@@ -17,6 +17,9 @@ class Ability
 
     user ||= User.new  #conditional assignment operator more common than >  #user = User.new unless user.present? <
 
+    can :destroy, Review do |rev|
+      rev.user = user 
+    end
 
     #in this rule we're saying: the user can `manage` meaning do any action on
     #the idea object if `idea.user == user` which means if the owner of

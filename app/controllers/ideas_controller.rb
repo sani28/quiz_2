@@ -9,6 +9,7 @@ before_action :find_idea, only: [:edit, :destroy, :show, :update]
 
   def index
     @ideas = Idea.order(created_at: :desc)
+
   end
 
   def create
@@ -30,7 +31,8 @@ before_action :find_idea, only: [:edit, :destroy, :show, :update]
   end
 
   def show
-
+      @review = Review.new
+      @reviews = @idea.reviews.order(created_at: :desc)
   end
 
   def edit
