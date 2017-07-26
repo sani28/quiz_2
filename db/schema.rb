@@ -32,5 +32,5 @@ ActiveRecord::Schema.define(version: 20170725174818) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "ideas", "users", column: "user_id"
+  add_foreign_key "ideas", "users"
 end
