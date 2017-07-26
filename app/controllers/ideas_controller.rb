@@ -44,7 +44,7 @@ before_action :find_idea, only: [:edit, :destroy, :show, :update]
 
   def update
     @idea = Idea.find params[:id]
-    idea_params = params.require(:idea).permit(:title, :body)
+    idea_params = params.require(:idea).permit(:title, :description)
 
     if @idea.update idea_params
       redirect_to idea_path(@idea)
